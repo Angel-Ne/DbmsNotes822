@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DBMS Concepts</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #f4f4f9;
+      color: #333;
+    }
+    header {
+      background: #34495e;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #2c3e50;
+      flex-wrap: wrap;
+    }
+    nav button {
+      background: transparent;
+      border: none;
+      color: white;
+      padding: 1rem;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+    nav button:hover {
+      background: #1abc9c;
+    }
+    .section {
+      display: none;
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    .section.active {
+      display: block;
+      animation: fadeIn 0.5s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    h2 {
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 0.5rem;
+    }
+    ul, ol {
+      padding-left: 1.5rem;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1rem 0;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+    }
+    .note {
+      background: #e8f0fe;
+      border-left: 4px solid #3498db;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Class 12 Computer Science - DBMS Summary</h1>
+    <p>Detailed interactive guide to understand Database Management Systems</p>
+  </header>
+
+  <nav>
+    <button onclick="showSection('data')">Data vs Information</button>
+    <button onclick="showSection('db_intro')">Database</button>
+    <button onclick="showSection('dbms')">DBMS</button>
+    <button onclick="showSection('models')">Database Models</button>
+    <button onclick="showSection('sql')">SQL</button>
+    <button onclick="showSection('erd')">ER Model</button>
+    <button onclick="showSection('dba')">DBA</button>
+    <button onclick="showSection('normalization')">Normalization</button>
+  </nav>
+
+  <section id="data" class="section active">
+    <h2>Data vs Information</h2>
+    <p><strong>Data</strong> are raw, unorganized facts and figures that do not carry any specific meaning alone. For example, names, numbers, and places like "Ram, 17, Pokhara" are considered data.</p>
+    <p><strong>Information</strong> is processed and organized data that provides meaningful context. For example, "Ram is 17 years old and lives in Pokhara."</p>
+    <div class="note">
+      <strong>Remember:</strong> All information is data, but not all data is information.
+    </div>
+  </section>
+
+  <section id="db_intro" class="section">
+    <h2>What is a Database?</h2>
+    <p>A <strong>Database</strong> is a systematic collection of interrelated data that can be easily accessed, managed, and updated. It's organized in tabular form and is useful for data retrieval and decision-making processes.</p>
+    <h3>Drawbacks of File-Based System</h3>
+    <ul>
+      <li><strong>Data Redundancy:</strong> Duplicate data across multiple files</li>
+      <li><strong>Lack of Security:</strong> Limited control over access</li>
+      <li><strong>Complex Data Retrieval:</strong> Hard to search and generate reports</li>
+      <li><strong>Slow Performance:</strong> Inefficient for large data</li>
+    </ul>
+  </section>
+
+  <section id="dbms" class="section">
+    <h2>Database Management System (DBMS)</h2>
+    <p>A DBMS is software that interacts with end users, applications, and the database itself to capture and analyze data.</p>
+    <h3>Advantages of DBMS</h3>
+    <ul>
+      <li>Sharing of data among multiple users</li>
+      <li>Reduced data redundancy</li>
+      <li>Backup and recovery features</li>
+      <li>Data security using access control</li>
+      <li>Multiple user interface support</li>
+      <li>Data integrity and consistency</li>
+    </ul>
+    <h3>Disadvantages of DBMS</h3>
+    <ul>
+      <li>High cost of installation and maintenance</li>
+      <li>Requires skilled manpower</li>
+      <li>Frequent backups needed</li>
+    </ul>
+  </section>
+
+  <section id="models" class="section">
+    <h2>Database Models</h2>
+    <h3>Hierarchical Model</h3>
+    <p>Tree-like structure with parent-child relationships. Example: An organization chart.</p>
+    <h4>Advantages:</h4>
+    <ul><li>Simple structure</li><li>Efficient for 1:1 or 1:many relationships</li></ul>
+    <h4>Disadvantages:</h4>
+    <ul><li>No support for many-to-many relationships</li><li>Redundant data entries</li></ul>
+
+    <h3>Network Model</h3>
+    <p>Data is organized as records connected by links. Allows many-to-many relationships.</p>
+    <h4>Advantages:</h4>
+    <ul><li>Flexible data access</li><li>Reduced redundancy</li></ul>
+    <h4>Disadvantages:</h4>
+    <ul><li>Complex structure</li><li>Requires detailed programming</li></ul>
+
+    <h3>Relational Model</h3>
+    <p>Data is stored in tables (relations). Widely used today. Example: MySQL, MS Access.</p>
+    <h4>Advantages:</h4>
+    <ul><li>Efficient querying</li><li>Supports complex relationships</li></ul>
+    <h4>Disadvantages:</h4>
+    <ul><li>Complex for very large systems</li><li>Requires powerful hardware</li></ul>
+  </section>
+
+  <section id="sql" class="section">
+    <h2>Structured Query Language (SQL)</h2>
+    <p>SQL is a standard language for managing relational databases. It includes:</p>
+    <ul>
+      <li><strong>DDL:</strong> Data Definition Language (e.g., CREATE, ALTER)</li>
+      <li><strong>DML:</strong> Data Manipulation Language (e.g., SELECT, INSERT, UPDATE, DELETE)</li>
+      <li><strong>DCL:</strong> Data Control Language (e.g., GRANT, REVOKE)</li>
+    </ul>
+    <div class="note">
+      <p><strong>Example:</strong> CREATE TABLE Student (ID INT, Name TEXT);</p>
+    </div>
+  </section>
+
+  <section id="erd" class="section">
+    <h2>Entity Relationship Diagram (ERD)</h2>
+    <ul>
+      <li><strong>Entities:</strong> Objects like Student, Teacher</li>
+      <li><strong>Attributes:</strong> Properties like Name, ID</li>
+      <li><strong>Relationships:</strong> Associations like "teaches", "enrolls"</li>
+    </ul>
+    <p>ER diagrams are used for database design and understanding relationships between entities.</p>
+  </section>
+
+  <section id="dba" class="section">
+    <h2>Database Administrator (DBA)</h2>
+    <h3>Qualities</h3>
+    <ul>
+      <li>Skilled in DBMS tools</li>
+      <li>Expert in network and OS</li>
+      <li>Good database design and backup knowledge</li>
+    </ul>
+    <h3>Responsibilities</h3>
+    <ul>
+      <li>Database installation and configuration</li>
+      <li>Managing user roles and privileges</li>
+      <li>Ensuring security and backup</li>
+    </ul>
+  </section>
+
+  <section id="normalization" class="section">
+    <h2>Normalization</h2>
+    <p>Process of organizing data to eliminate redundancy and dependency. Introduced by E.F. Codd in 1970.</p>
+    <h3>1NF (First Normal Form)</h3>
+    <ul><li>Eliminates repeating groups</li><li>Ensures atomic values</li></ul>
+    <h3>2NF (Second Normal Form)</h3>
+    <ul><li>Based on 1NF</li><li>Eliminates partial dependency</li></ul>
+    <h3>3NF (Third Normal Form)</h3>
+    <ul><li>Based on 2NF</li><li>Eliminates transitive dependency</li></ul>
+    <h3>Advantages of Normalization</h3>
+    <ul>
+      <li>Reduces redundancy</li>
+      <li>Improves data consistency</li>
+      <li>Efficient indexing and sorting</li>
+      <li>Better performance</li>
+    </ul>
+  </section>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+</body>
+</html>
